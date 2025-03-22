@@ -19,8 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.restapplication.RestApplication.bean.Employee;
 import com.restapplication.RestApplication.service.EmployeeService;
 
+import lombok.extern.log4j.Log4j2;
+
 @RestController
 @RequestMapping("/employees")
+@Log4j2
 public class EmployeeController {
 	
 	@Autowired
@@ -33,6 +36,7 @@ public class EmployeeController {
 	
 	@GetMapping("/{id}")
 	public Employee getEmployeeById(@PathVariable("id") Integer employeeId) {
+		log.info("we are fetching all employees details here");
 		return service.getEmployeeById(employeeId);
 	}
 	
